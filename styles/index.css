@@ -1,0 +1,51 @@
+
+body{
+	padding: 0px;
+	margin: 0px;
+}
+
+.homeButtom{
+	width: 96px;
+	height: 86px;
+	border-right: 3px solid #444;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+	font-size: 80px;
+	font-family: sans-serif;
+	color: #444;
+}
+
+.paintingTitle{
+	width: calc(100% - 96px);
+	margin-left: 97px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 46px;
+	font-size: 5vw;
+	text-align: center;
+	font-family: sans-serif;
+	display: inline-block;
+}
+
+.painting{
+	width: 100vw;
+	height: auto;
+}
+
+#depthMap, .particleMap{
+	position: absolute;
+	width: 100vw;
+	height: auto;
+	top: 86px;
+	left: 0px;
+	opacity: 0.8;
+}
+
+.huggabug{
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: pink;
+}
