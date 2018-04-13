@@ -17,12 +17,16 @@ class Huggabug {
 		if(!width)
 		{
 			var data = this.ctxDepth.getImageData(this.x, this.y, 1, 1).data
-			var depth = 1 - (data[0]/255)
+			if(data)
+			{
+				var depth = 1.0 - (data[0]/255.0)
+				//console.log('DEPTH', data[0], depth, width)
+			}
+			else
+				var depth = 1.0
 			var width = (depth*10)*(depth*10)
 		}
-
-		//console.log('DEPTH', data[0], depth, width)
-
+	
 		//this.ctx.fillRect(this.x, this.y, width, width)
 		this.ctx.drawImage(this.image, this.x, this.y, width, width )
 	}

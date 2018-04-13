@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 
 	var butterby = new Image(width, height)
-    butterby.src = './images/butterby.png'
+    butterby.src = './images/butterby1.gif'
     butterby.crossOrigin = "anonymous"
 
 
