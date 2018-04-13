@@ -1,4 +1,8 @@
 
+html{
+	background: black;
+}
+
 body{
 	padding: 0px;
 	margin: 0px;
@@ -8,6 +12,7 @@ body{
 	width: 96px;
 	height: 86px;
 	border-right: 3px solid #444;
+	border-left: 3px solid #444;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -17,12 +22,17 @@ body{
 	color: #444;
 }
 
+.homeButton-Image{
+    height: 100%;
+    width: auto;
+}
+
 .paintingTitle{
 	width: calc(100% - 96px);
 	margin-left: 97px;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	height: 46px;
+	height: 20px;
 	font-size: 5vw;
 	text-align: center;
 	font-family: sans-serif;
@@ -38,9 +48,8 @@ body{
 	position: absolute;
 	width: 100vw;
 	height: auto;
-	top: 86px;
+	top: 66px;
 	left: 0px;
-	opacity: 0.8;
 }
 
 .huggabug{
