@@ -99,12 +99,26 @@ body{
 	left: 0px;
 }
 
-#depthMap, .particleMap{
+.particleMap{
 	position: absolute;
 	width: 100vw;
 	height: auto;
 	top: 66px;
 	left: 0px;
+	image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
+}
+
+#depthMap{
+	position: absolute;
+	width: 100vw;
+	height: auto;
+	top: 66px;
+	left: 0px;
+	visibility: hidden;
 }
 
 .huggabug{
@@ -117,7 +131,7 @@ body{
 .artBox{
 	width: calc(100% - 20px);
 	height: calc(30vw - 30px);
-	border: 8px solid white;
+	border: 8px solid #888282;
 	overflow: hidden;
 	display: inline-block;
 }
@@ -136,5 +150,17 @@ body{
 .artIcon{
 	height: 100%;
 	width: auto;
+}
+
+#player{
+	visibility: hidden;
+}
+
+.balletBar{
+	height: 10px;
+	background: white;
+	width: 100vw;
+	margin-top: 50px;
+	z-index: 2;
 }
 
