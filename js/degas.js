@@ -29,6 +29,30 @@ function loadSpriteImages(){
 }
 
 
+function loadCutoutImages(width, height) {
+	var adele = loadImage('./images/degasCutouts/Adele.png', width, height)
+	var celine = loadImage('./images/degasCutouts/Celine.png', width, height)
+	var elena = loadImage('./images/degasCutouts/Elena.png', width, height)
+	var jodi = loadImage('./images/degasCutouts/Jodi.png', width, height)
+	
+	return new Promise((accept, reject) => {
+		Promise.all([adele, celine, elena, jodi]).then(([adele, celine, elena, jodi]) => {
+			accept([adele, celine, elena, jodi])
+		})
+	})
+}	
+
+
+function loadPaperdolls(images, ctxDraw, ctxDepth, width, height)
+{
+	var adele = new Paperdoll(ctxDraw, ctxDepth, images[0], 161, width, height)
+	var celine = new Paperdoll(ctxDraw, ctxDepth, images[1], 181, width, height)
+	var elena = new Paperdoll(ctxDraw, ctxDepth, images[2], 150, width, height)
+	var jodi = new Paperdoll(ctxDraw, ctxDepth, images[3], 112, width, height)
+	return [adele, celine, elena, jodi]
+}
+
+
 function getSpriteCount(){
 	return 55
 }

@@ -39,17 +39,18 @@ $(document).ready(function(){
     var spriteImages = loadSpriteImages()
 
     var cutouts = []
-    var cutoutImages = loadCutoutImages()
+    var cutoutImages = loadCutoutImages(width, height)
 
     //choose image set for the depth map
 	var depthMap = loadImage($('#depthMap').attr('src'))
 
 
 	//start game once all are loaded
-	Promise.all([playerImages, spriteImages, depthMap]).then(([playerImages, spriteImages, depthMap]) => {
+	Promise.all([playerImages, spriteImages, depthMap, cutoutImages]).then(([playerImages, spriteImages, depthMap, cutoutImages]) => {
 		
 		ctxDepth.drawImage(depthMap, 0, 0, width, height)
 		player = new Player(width*0.8, height*0.5, ctxDraw, ctxDepth, playerImages)
+		cutouts = loadPaperdolls(cutoutImages, ctxDraw, ctxDepth, width, height)
 
 		var spriteCount = getSpriteCount()
 		for(var i = 0; i < spriteCount; i++)
@@ -77,12 +78,20 @@ $(document).ready(function(){
 			drawOrder[playerDepth] = []
 		drawOrder[playerDepth].push(player)
 
+		cutouts.forEach((item, index) => {
+			var d = item.submitDraw()
+			if(!drawOrder[d])
+				drawOrder[d] = []
+			drawOrder[d].push(item)
+		})
+
 		bugs.forEach((item, index) => {
 			var bugDepth = item.submitDraw()
 			if(!drawOrder[bugDepth])
 				drawOrder[bugDepth] = []
 			drawOrder[bugDepth].push(item)
 		})
+
 
 		for(var i = 255; i > -1; i--)
 		{

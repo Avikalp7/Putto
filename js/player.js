@@ -65,27 +65,28 @@ class Player {
 		var self = this
 		var keySteps = {38: false, 40: false, 37:false, 39:false}
 		$(document).on('keydown', function(e){
+			var step = 5
 			if (e.keyCode == '38' || keySteps[38]) {
 		        // up arrow
-		        self.y = self.proposeMoveY(-3)
+		        self.y = self.proposeMoveY(-step)
 		        keySteps[38] = true
 		        self.image = self.poses.back
 		    }
 		    if (e.keyCode == '40' || keySteps[40]) {
 		        // down arrow
-		        self.y = self.proposeMoveY(3)
+		        self.y = self.proposeMoveY(step)
 		        keySteps[40] = true
 		        self.image = self.poses.front
 		    }
 		    if (e.keyCode == '37' || keySteps[37]) {
 		       // left arrow
-		       self.x -= 3
+		       self.x -= step
 		       keySteps[37] = true
 		       self.image = self.poses.left
 		    }
 		    if (e.keyCode == '39' || keySteps[39]) {
 		       // right arrow
-		       self.x += 3
+		       self.x += step
 		       keySteps[39] = true
 		       self.image = self.poses.right
 		    }

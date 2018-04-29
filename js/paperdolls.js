@@ -2,12 +2,14 @@
 
 class Paperdoll {
 
-	constructor(x, y, ctx, ctxDepth, image, depth) 
+	constructor(ctx, ctxDepth, image, depth, width, height) 
 	{
 		this.ctxDepth = depth
 		this.ctx = ctx
 		this.depth = depth
 		this.image = image
+		this.width = width
+		this.height = height
 	}
 
 
@@ -19,7 +21,7 @@ class Paperdoll {
 
 	draw()
 	{
-		this.ctx.drawImage(this.image, 0, 0)
+		this.ctx.drawImage(this.image, 0, 0, this.width, this.height)
 	}
 
 }
