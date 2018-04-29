@@ -2,9 +2,10 @@
 
 class Player {
 
-	constructor(x, y, ctx, depth, images) 
+	constructor(x, y, ctx, ctxDepth, ctxWalking, images) 
 	{
-		this.ctxDepth = depth
+		this.ctxDepth = ctxDepth
+		this.ctxWalking = ctxWalking
 		this.ctx = ctx
 		this.maxWidth = 150
 		this.maxHeight = 150
@@ -52,11 +53,34 @@ class Player {
 	proposeMoveY(deltaY) //checks for a legal move
 	{
 		var y = this.y + deltaY
+
+		var data = this.ctxWalking.getImageData(this.x, y, 1, 1).data
+		console.log("data at this spot is", data)
 		
-		if(y < this.ctx.canvas.height - 40)
+		if(data[2] === 255)//blue barrier
+			return this.y
+		if(data[0] === 255)//red door
+			return this.y
+		if(y > -1 && y < this.ctx.canvas.height - 40)
 			return y
 		else
 			return this.y
+	}
+
+
+	proposeMoveX(deltaX) //checks for a legal move
+	{
+		var x = this.x + deltaX
+
+		var data = this.ctxWalking.getImageData(x, this.y, 1, 1).data
+		console.log("data at this spot is", data)
+
+		if(data[2] === 255)//blue barrier
+			return this.x
+		if(x > -1 && x < this.ctx.canvas.width)
+			return x
+		else
+			return this.x
 	}
 
 
@@ -80,13 +104,13 @@ class Player {
 		    }
 		    if (e.keyCode == '37' || keySteps[37]) {
 		       // left arrow
-		       self.x -= step
+		       self.x = self.proposeMoveX(-step)
 		       keySteps[37] = true
 		       self.image = self.poses.left
 		    }
 		    if (e.keyCode == '39' || keySteps[39]) {
 		       // right arrow
-		       self.x += step
+		       self.x = self.proposeMoveX(step)
 		       keySteps[39] = true
 		       self.image = self.poses.right
 		    }

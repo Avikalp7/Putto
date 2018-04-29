@@ -30,6 +30,12 @@ $(document).ready(function(){
 	depthCanvas.height= height 
 	var ctxDepth = depthCanvas.getContext("2d");
 
+	//hidden Canvas for the walking map
+	var walkCanvas= document.createElement('canvas');
+	walkCanvas.width= width 
+	walkCanvas.height= height 
+	var ctxWalking = walkCanvas.getContext("2d");
+
 	//choose image set for the player
 	var player;
 	var playerImages = loadPlayerImages()
@@ -41,15 +47,18 @@ $(document).ready(function(){
     var cutouts = []
     var cutoutImages = loadCutoutImages(width, height)
 
-    //choose image set for the depth map
-	var depthMap = loadImage($('#depthMap').attr('src'))
+    //choose image for the depth map
+	var depthMap = loadImage($('#depthMap').attr('src'), width, height)
+
+	//chose image for the walking map
+	var walkingMap = loadImage($('#blockMap').attr('src'), width, height)
 
 
 	//start game once all are loaded
-	Promise.all([playerImages, spriteImages, depthMap, cutoutImages]).then(([playerImages, spriteImages, depthMap, cutoutImages]) => {
-		
+	Promise.all([playerImages, spriteImages, depthMap, cutoutImages, walkingMap]).then(([playerImages, spriteImages, depthMap, cutoutImages, walkingMap]) => {
 		ctxDepth.drawImage(depthMap, 0, 0, width, height)
-		player = new Player(width*0.8, height*0.5, ctxDraw, ctxDepth, playerImages)
+		ctxWalking.drawImage(walkingMap, 0, 0, width, height)
+		player = new Player(width*0.8, height*0.5, ctxDraw, ctxDepth, ctxWalking, playerImages)
 		cutouts = loadPaperdolls(cutoutImages, ctxDraw, ctxDepth, width, height)
 
 		var spriteCount = getSpriteCount()
