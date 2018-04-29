@@ -7,14 +7,14 @@ class Player {
 		this.ctxDepth = ctxDepth
 		this.ctxWalking = ctxWalking
 		this.ctx = ctx
-		this.maxWidth = 150
-		this.maxHeight = 150
-		this.width = 150;
-		this.height = 150;
+		this.maxWidth = 23*5
+		this.maxHeight = 92*5
+		this.width = 25;
+		this.height = 90;
 		this.x = x
 		this.y = y
 		this.poses = images
-		this.image = this.poses.front
+		this.image = this.poses.left
 		this.bindEvents()
 	}
 
@@ -55,7 +55,7 @@ class Player {
 		var y = this.y + deltaY
 
 		var data = this.ctxWalking.getImageData(this.x, y, 1, 1).data
-		console.log("data at this spot is", data)
+		//console.log("data at this spot is", data)
 		
 		if(data[2] === 255)//blue barrier
 			return this.y
@@ -73,7 +73,7 @@ class Player {
 		var x = this.x + deltaX
 
 		var data = this.ctxWalking.getImageData(x, this.y, 1, 1).data
-		console.log("data at this spot is", data)
+		//console.log("data at this spot is", data)
 
 		if(data[2] === 255)//blue barrier
 			return this.x

@@ -58,7 +58,7 @@ $(document).ready(function(){
 	Promise.all([playerImages, spriteImages, depthMap, cutoutImages, walkingMap]).then(([playerImages, spriteImages, depthMap, cutoutImages, walkingMap]) => {
 		ctxDepth.drawImage(depthMap, 0, 0, width, height)
 		ctxWalking.drawImage(walkingMap, 0, 0, width, height)
-		player = new Player(width*0.8, height*0.5, ctxDraw, ctxDepth, ctxWalking, playerImages)
+		player = new Player(width*getPlayerStartX(), height*getPlayerStartY(), ctxDraw, ctxDepth, ctxWalking, playerImages)
 		cutouts = loadPaperdolls(cutoutImages, ctxDraw, ctxDepth, width, height)
 
 		var spriteCount = getSpriteCount()

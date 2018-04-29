@@ -1,10 +1,10 @@
 
 
 function loadPlayerImages(){
-	var front = loadImage('./images/ghosty/front.svg')
-	var back = loadImage('./images/ghosty/back.svg')
-	var left = loadImage('./images/ghosty/left.svg')
-	var right = loadImage('./images/ghosty/right.svg')
+	var front = loadImage('./images/ghosty/figureF.svg')
+	var back = loadImage('./images/ghosty/figureB.svg')
+	var left = loadImage('./images/ghosty/figureL.svg')
+	var right = loadImage('./images/ghosty/figureR.svg')
 
 	return new Promise((accept, reject) => {
 		Promise.all([front, back, left, right]).then(([front, back, left, right]) => {
@@ -47,14 +47,25 @@ function loadCutoutImages(width, height) {
 function loadPaperdolls(images, ctxDraw, ctxDepth, width, height)
 {
 	var agnes = new Paperdoll(ctxDraw, ctxDepth, images[0], 104, width, height)
-	var adele = new Paperdoll(ctxDraw, ctxDepth, images[0], 161, width, height)
-	var celine = new Paperdoll(ctxDraw, ctxDepth, images[1], 181, width, height)
-	var elena = new Paperdoll(ctxDraw, ctxDepth, images[2], 150, width, height)
-	var jodi = new Paperdoll(ctxDraw, ctxDepth, images[3], 112, width, height)
-	return [adele, celine, elena, jodi]
+	var adele = new Paperdoll(ctxDraw, ctxDepth, images[1], 161, width, height)
+	var celine = new Paperdoll(ctxDraw, ctxDepth, images[2], 181, width, height)
+	var elena = new Paperdoll(ctxDraw, ctxDepth, images[3], 150, width, height)
+	var jodi = new Paperdoll(ctxDraw, ctxDepth, images[4], 112, width, height)
+	return [agnes, adele, celine, elena, jodi]
 }
 
 
 function getSpriteCount(){
 	return 55
 }
+
+
+function getPlayerStartX()
+{
+	return 0.8
+}
+
+function getPlayerStartY(){
+	return 0.9
+}
+
