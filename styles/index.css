@@ -121,6 +121,17 @@ body{
 	visibility: hidden;
 }
 
+#blockMap{
+	position: absolute;
+	width: 100vw;
+	height: auto;
+	top: 66px;
+	left: 0px;
+	visibility: hidden;
+	opacity: 0.4;
+}
+
+
 .huggabug{
 	position: absolute;
 	width: 10px;

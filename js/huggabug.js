@@ -2,25 +2,30 @@
 
 class Huggabug {
 
-	constructor(x, y, ctx, depth, sprites, image) 
+	constructor(x, y, ctx, depth, images) 
 	{
 		this.ctxDepth = depth
 		this.ctx = ctx
-		this.ctxSprites = sprites
 		this.x = x
 		this.y = y
 		this.angle = 1
-		this.step = 0
-		this.image = image
+		this.step = Math.round(Math.random()*(images.length - 1))
+		this.poses = images
+		this.image = images[1]
 		this.width = 100
 	}
 
 	draw()
 	{
+		this.image = this.poses[this.step]
 		this.ctx.drawImage(this.image, this.x, this.y, this.width, this.width )
-		this.step ++;
-		if(this.step > 31)
-			this.step = 0
+
+		if(Math.round(Math.random()*10) > 4)
+		{
+			this.step ++;
+			if(this.step >= this.poses.length)
+				this.step = 1
+		}
 	}
 
 	submitDraw()

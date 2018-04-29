@@ -1,76 +1,68 @@
 
 
+function loadImage(src, width, height)
+{
+	return new Promise(function(accept, reject) {
+		if(width && height)
+			var image = new Image(width, height)
+		else
+			var image = new Image()
+		image.src = src
+		image.onload = () => { accept(image) }
+	})
+}
+
+
 $(document).ready(function(){
 
-	var bugsCount = 55
 	var width = $('.painting').width()
 	var height = $('.painting').height()
-	var bugs = []
-	var player;
 
-
+	//main Canvas for drawing sprites and player
 	var canvas = $('.particleMap')[0]
 	canvas.width= width;
 	canvas.height= height + 100;
 	var ctxDraw = canvas.getContext("2d");
 
-	var waitOnImages = 3
+	//hidden Canvas for drawing depth map
+	var depthCanvas= document.createElement('canvas');
+	depthCanvas.width= width 
+	depthCanvas.height= height 
+	var ctxDepth = depthCanvas.getContext("2d");
 
-	var spriteW = 429
-	var spriteH = 13728
-	var spriteCanvas= document.createElement('canvas');
-	var ctxSprites;
-	var butterby = new Image(spriteW, spriteH)
-    butterby.src = './images/butterby1_sprites.png'
-    butterby.crossOrigin = "anonymous"
-    butterby.onload = () => {
-	    spriteCanvas.width= spriteW;
-	    spriteCanvas.height= spriteH;
-	    ctxSprites = spriteCanvas.getContext("2d");
-	    ctxSprites.drawImage(butterby, 0, 0, spriteW, spriteH)
-	    readyToGo()
-	}
+	//choose image set for the player
+	var player;
+	var playerImages = loadPlayerImages()
 
+	//choose image set for the sprites
+	var bugs = []
+    var spriteImages = loadSpriteImages()
 
-	var still = new Image(width, height)
-	still.src = './images/butterby.png'
-	still.onload = () => {	readyToGo() }
+    var cutouts = []
+    var cutoutImages = loadCutoutImages()
+
+    //choose image set for the depth map
+	var depthMap = loadImage($('#depthMap').attr('src'))
 
 
-	var depthMap = new Image(width, height)
-	var offScreenCanvas= document.createElement('canvas');
-	var ctxDepth;
-    depthMap.src = $('#depthMap').attr('src')
-    console.log("SOURCE IS", depthMap.src)
-    depthMap.crossOrigin = "anonymous"
-    depthMap.onload = () => {
-	    offScreenCanvas.width= width;
-	    offScreenCanvas.height= height;
-	    ctxDepth= offScreenCanvas.getContext("2d");
-	    ctxDepth.drawImage(depthMap, 0, 0, width, height)
-	    readyToGo()
-	}
+	//start game once all are loaded
+	Promise.all([playerImages, spriteImages, depthMap]).then(([playerImages, spriteImages, depthMap]) => {
+		
+		ctxDepth.drawImage(depthMap, 0, 0, width, height)
+		player = new Player(width*0.8, height*0.5, ctxDraw, ctxDepth, playerImages)
 
-
-	readyToGo = function()
-	{
-		waitOnImages --
-		if(waitOnImages === 0) // ready to draw!
+		var spriteCount = getSpriteCount()
+		for(var i = 0; i < spriteCount; i++)
 		{
-			player = new Player(width*0.8, height*0.5, ctxDraw, ctxDepth, './images/cat.png')
-
-			for(var i = 0; i < bugsCount; i++)
-			{
-				var x = Math.floor(Math.random()*width)
-				var y = Math.floor(Math.random()*height)
-				var hb = new Huggabug(x,y, ctxDraw, ctxDepth, ctxSprites, still)
-				hb.draw()
-				bugs.push(hb)
-			}
-
-			setTimeout(() => redraw(), 1000)
+			var x = Math.floor(Math.random()*width)
+			var y = Math.floor(Math.random()*height)
+			var hb = new Huggabug(x,y, ctxDraw, ctxDepth, spriteImages)
+			hb.draw()
+			bugs.push(hb)
 		}
-	}
+
+		setTimeout(() => redraw(), 1000)
+	})
 
 
     redraw = function()

@@ -2,20 +2,18 @@
 
 class Player {
 
-	constructor(x, y, ctx, depth, image) 
+	constructor(x, y, ctx, depth, images) 
 	{
 		this.ctxDepth = depth
 		this.ctx = ctx
 		this.maxWidth = 150
-		this.maxHeight = 200
-		this.width = 200;
-		this.height = 200;
+		this.maxHeight = 150
+		this.width = 150;
+		this.height = 150;
 		this.x = x
 		this.y = y
-		this.image = new Image(this.width, this.height)
-		this.image.src = image
-		this.image.crossOrigin = "anonymous"
-		this.image.onload = () => { this.draw() }
+		this.poses = images
+		this.image = this.poses.front
 		this.bindEvents()
 	}
 
@@ -71,21 +69,25 @@ class Player {
 		        // up arrow
 		        self.y = self.proposeMoveY(-3)
 		        keySteps[38] = true
+		        self.image = self.poses.back
 		    }
 		    if (e.keyCode == '40' || keySteps[40]) {
 		        // down arrow
 		        self.y = self.proposeMoveY(3)
 		        keySteps[40] = true
+		        self.image = self.poses.front
 		    }
 		    if (e.keyCode == '37' || keySteps[37]) {
 		       // left arrow
 		       self.x -= 3
 		       keySteps[37] = true
+		       self.image = self.poses.left
 		    }
 		    if (e.keyCode == '39' || keySteps[39]) {
 		       // right arrow
 		       self.x += 3
 		       keySteps[39] = true
+		       self.image = self.poses.right
 		    }
 		})
 
