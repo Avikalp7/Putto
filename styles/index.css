@@ -105,11 +105,6 @@ body{
 	height: auto;
 	top: 66px;
 	left: 0px;
-	image-rendering: -moz-crisp-edges;
-    image-rendering: -o-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-    -ms-interpolation-mode: nearest-neighbor;
-    image-rendering: pixelated;
 }
 
 #depthMap{
