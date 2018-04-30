@@ -1,18 +1,26 @@
 
 function goToNextArt()
 {
+	console.log("GO TO NEXT ART")
+	//window.location.href = './1650.html'
+}
+
+
+function goToPriorArt()
+{
+	console.log("GO TO PRIOR ART")
 	window.location.href = './1650.html'
 }
 
 
 function getPlayerStartX()
 {
-	return 0.8
+	return 0.3
 }
 
 
 function getPlayerStartY(){
-	return 0.9
+	return 0.26
 }
 
 
@@ -33,18 +41,10 @@ function getSpriteImages(){
 
 function getCutoutDepths()
 {
-	return [104,
-			161,
-			181,
-			150,
-			112]
+	return []
 }
 
 
 function getCutoutImages(){
-	return ['./images/degasCutouts/Agnes.png',
-			'./images/degasCutouts/Adele.png',
-			'./images/degasCutouts/Celine.png',
-			'./images/degasCutouts/Elena.png',
-			'./images/degasCutouts/Jodi.png',]
+	return []
 }
