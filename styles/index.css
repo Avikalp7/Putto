@@ -36,6 +36,14 @@ body{
     text-align: center;
 }
 
+.blahBar2{
+	width: 100vw;
+    background: white;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
 .container{
 	display: inline-block;
 	width: 100%;
