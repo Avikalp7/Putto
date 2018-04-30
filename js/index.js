@@ -1,5 +1,6 @@
 
 
+
 $(document).ready(async function(){
 	//figure out where the door is
 	var doorX = $('.entryDoor').offset().left + 10
@@ -13,6 +14,7 @@ $(document).ready(async function(){
 	canvas.width= width
 	canvas.height= height
 	var ctxDraw = canvas.getContext("2d");
+
 
 	//choose image set for the player
 	var player;

@@ -7,10 +7,10 @@ class Player {
 		this.ctxDepth = ctxDepth
 		this.ctxWalking = ctxWalking
 		this.ctx = ctx
-		this.maxWidth = 23*4
-		this.maxHeight = 92*4
-		this.width = 25;
-		this.height = 90;
+		this.maxWidth = getPlayerMaxWidth() * ctx.canvas.width
+		this.maxHeight = this.maxWidth * 92/23
+		this.width
+		this.height
 		this.x = x
 		this.y = y
 		this.poses = images
@@ -126,6 +126,14 @@ class Player {
 			return x
 		else
 			return this.x
+	}
+
+
+	resize(width, height, xShift, yShift){
+		this.maxWidth = getPlayerMaxWidth() * width
+		this.maxHeight = this.maxWidth * 92/23
+		this.x += xShift
+		this.y += yShift
 	}
 
 

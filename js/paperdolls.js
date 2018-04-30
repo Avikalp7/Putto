@@ -13,6 +13,12 @@ class Paperdoll {
 	}
 
 
+	resize(width, height){
+		this.width = width
+		this.height = height
+	}
+
+
 	submitDraw()
 	{
 		return this.depth

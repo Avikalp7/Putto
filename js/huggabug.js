@@ -12,8 +12,15 @@ class Huggabug {
 		this.step = Math.round(Math.random()*(images.length - 1))
 		this.poses = images
 		this.image = images[1]
-		this.width = 100
+		this.maxWidth = getSpriteMaxWidth() * ctx.canvas.width
 	}
+
+	resize(width, height, xShift, yShift){
+		this.maxWidth = getSpriteMaxWidth() * width
+		this.x += xShift
+		this.y += yShift
+	}
+
 
 	draw()
 	{
@@ -46,7 +53,7 @@ class Huggabug {
 			var depth = 0
 			data = [0]
 		}
-		this.width = (depth*10)*(depth*10)
+		this.width = (depth)*(depth)*this.maxWidth
 
 		var move = 2
 		

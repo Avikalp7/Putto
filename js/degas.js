@@ -22,6 +22,17 @@ function getPlayerStartY(){
 }
 
 
+function getPlayerMaxWidth(){
+	return 0.12
+}
+
+
+
+function getSpriteMaxWidth(){
+	return 0.20
+}
+
+
 function getSpriteCount(){
 	return 55
 }

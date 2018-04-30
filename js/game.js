@@ -23,6 +23,7 @@ $(document).ready(function(){
 	walkCanvas.height= height 
 	var ctxWalking = walkCanvas.getContext("2d");
 
+
 	//choose image set for the player
 	var player;
 	var playerImages = loadPlayerImages()
@@ -62,6 +63,36 @@ $(document).ready(function(){
 
 		var dialog = $('<div/>').addClass('dialogBox2').appendTo($('body'))
 		say('This is what I`ve computed for this piece: '+getCaption(), dialog)
+
+		$(window).on('resize', function(){
+			width = $('.painting').width()
+			height = $('.painting').height()
+			var xShift = width - canvas.width
+			var yShift = height + 100 - canvas.height
+	      	canvas.width = width
+	      	canvas.height = height + 100
+	      	depthCanvas.width = width
+	      	depthCanvas.height = height
+	      	walkCanvas.width = width
+	      	walkCanvas.height = height
+	      	ctxDepth.resetTransform()
+			ctxDepth.clearRect(0, 0, width, height)
+	      	ctxDepth.drawImage(depthMap, 0, 0, width, height)
+	      	ctxWalking.resetTransform()
+			ctxWalking.clearRect(0, 0, width, height)
+			ctxWalking.drawImage(walkingMap, 0, 0, width, height)
+
+	      	if(player)
+	      	{
+	      		player.resize(width, height, xShift, yShift)
+	      		cutouts.forEach((item, index) => {
+					item.resize(width, height)
+				})
+				bugs.forEach((item, index) => {
+					item.resize(width, height, xShift, yShift)
+				})
+	      	}
+		})
 	})
 
 
