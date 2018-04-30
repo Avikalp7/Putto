@@ -177,7 +177,7 @@ body{
 
 .balletBar{
 	height: 10px;
-	background: #4a4442;
+	background: #badbbb;
 	width: 100vw;
 	margin-top: 50px;
 	z-index: 2;
@@ -191,9 +191,24 @@ body{
     padding: 8px;
     border-radius: 5px;
     margin: auto;
-    margin-top: 50px;
+    margin-bottom: 50px;
     font-family: 'VT323', monospace;
     font-size: 18pt;
+    max-width: 60%;
+    letter-spacing: .1rem;
+    text-align: left;
+}
+
+.dialogBox2
+{
+	position: absolute;
+	top: 15px;
+	left: 150px;
+	z-index: 1;
+	display: block;
+    color: #badabb;
+    font-family: 'VT323', monospace;
+    font-size: 11pt;
     max-width: 60%;
     letter-spacing: .1rem;
     text-align: left;

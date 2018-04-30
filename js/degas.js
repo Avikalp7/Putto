@@ -5,6 +5,12 @@ function goToNextArt()
 }
 
 
+function getCaption()
+{
+	return "I think it’s a person standing next to a horse; A close up, Of a blur."
+}
+
+
 function getPlayerStartX()
 {
 	return 0.8

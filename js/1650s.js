@@ -13,6 +13,12 @@ function goToPriorArt()
 }
 
 
+function getCaption()
+{
+	return "I think it's a group of people standing in front of a building; He seems expressionless. A blurry image, Of a person."
+}
+
+
 function getPlayerStartX()
 {
 	return 0.45
