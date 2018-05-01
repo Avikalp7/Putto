@@ -59,15 +59,17 @@ function getSpriteImages(){
 
 function getCutoutDepths()
 {
-	return [238, 179, 131, 112, 150, 163, 125, 136, 110]
+	//return [238, 179, 131, 112, 150, 163, 125, 136, 110]
+	return []
 }
 
 
 function getCutoutImages(){
-	var sprites = []
+	/*var sprites = []
 	for(var i = 1; i < 10; i++)
 	{
 		sprites.push(('./images/1500Cutouts/'+i+'.png'))
 	}
-	return sprites
+	return sprites*/
+	return []
 }
