@@ -2,7 +2,7 @@
 function goToNextArt()
 {
 	console.log("GO TO NEXT ART")
-	//window.location.href = './1650.html'
+	window.location.href = './1890.html'
 }
 
 

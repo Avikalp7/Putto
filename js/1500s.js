@@ -2,14 +2,14 @@
 function goToNextArt()
 {
 	console.log("GO TO NEXT ART")
-	//window.location.href = './1650.html'
+	window.location.href = './1580.html'
 }
 
 
 function goToPriorArt()
 {
 	console.log("GO TO PRIOR ART")
-	window.location.href = './1580.html'
+	window.location.href = './1890.html'
 }
 
 

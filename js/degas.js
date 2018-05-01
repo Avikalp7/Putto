@@ -1,8 +1,17 @@
 
 function goToNextArt()
 {
+	console.log("GO TO NEXT ART")
+	window.location.href = './1880.html'
+}
+
+
+function goToPriorArt()
+{
+	console.log("GO TO PRIOR ART")
 	window.location.href = './1650.html'
 }
+
 
 
 function getCaption()
