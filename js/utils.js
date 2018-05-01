@@ -47,7 +47,7 @@ function loadPlayerImages(){
 	})
 }
 
-function loadSpriteImages(){
+async function loadSpriteImages(){
 	var sprites = getSpriteImages()
 	return new Promise((accept, reject) => {
 		Promise.all(sprites).then((sprites) => {

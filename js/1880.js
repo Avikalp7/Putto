@@ -32,12 +32,12 @@ function getSpriteMaxWidth(){
 
 function getPlayerStartX()
 {
-	return 0.45
+	return 0.65
 }
 
 
 function getPlayerStartY(){
-	return 0.75
+	return 0.55
 }
 
 
