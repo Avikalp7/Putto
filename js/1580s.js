@@ -15,12 +15,12 @@ function goToPriorArt()
 
 function getCaption()
 {
-	return "I think it's a group of people standing in front of a building; He seems expressionless. A blurry image, Of a person."
+	return "I think it’s a painting of a person; A close up, Of a blur."
 }
 
 
 function getPlayerMaxWidth(){
-	return 0.12
+	return 0.02
 }
 
 
@@ -58,11 +58,15 @@ function getSpriteImages(){
 
 function getCutoutDepths()
 {
-	return [130, 82]
+	return [103, 69, 95, 97, 113, 129, 137, 113, 165]
 }
 
 
 function getCutoutImages(){
-	return ['./images/1650Cutouts/boyWall.png',
-			'./images/1650Cutouts/pot.png']
+	var sprites = []
+	for(var i = 2; i < 11; i++)
+	{
+		sprites.push('./images/1580Cutouts/'+i+'.png')
+	}
+	return sprites
 }

@@ -28,7 +28,9 @@ function loadImage(src, width, height)
 		else
 			var image = new Image()
 		image.src = src
+		//console.log('src is ', image.src)
 		image.onload = () => { accept(image) }
+		//image.onerror = (err) => { console.error(err) }
 	})
 }
 

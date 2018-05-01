@@ -9,14 +9,32 @@ function goToNextArt()
 function goToPriorArt()
 {
 	console.log("GO TO PRIOR ART")
-	window.location.href = './1650.html'
+	window.location.href = './1580.html'
 }
+
+
+function getCaption()
+{
+	return "I am not really confident, but I think it's a bunch of stuffed animals, and they seem: Expressionless, Expressionless, Expressionless, Expressionless, Surprised, Expressionless, Expressionless, and Angry. A close up, Of a blur."
+}
+
 
 
 function getPlayerStartX()
 {
 	return 0.3
 }
+
+function getPlayerMaxWidth(){
+	return 0.12
+}
+
+
+
+function getSpriteMaxWidth(){
+	return 0.40
+}
+
 
 
 function getPlayerStartY(){
@@ -41,10 +59,15 @@ function getSpriteImages(){
 
 function getCutoutDepths()
 {
-	return []
+	return [238, 179, 131, 112, 150, 163, 125, 136, 110]
 }
 
 
 function getCutoutImages(){
-	return []
+	var sprites = []
+	for(var i = 1; i < 10; i++)
+	{
+		sprites.push(('./images/1500Cutouts/'+i+'.png'))
+	}
+	return sprites
 }

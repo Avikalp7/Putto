@@ -144,7 +144,7 @@ body{
 	height: auto;
 	top: 66px;
 	left: 0px;
-	opacity: 0.3;
+	visibility: hidden;
 }
 
 
